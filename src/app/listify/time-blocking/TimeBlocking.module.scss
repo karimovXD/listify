@@ -1,0 +1,25 @@
+.list {
+    @apply flex gap-1 items-start justify-start flex-col w-full;
+
+    .block {
+        @apply p-3 relative flex items-start justify-between text-sm w-full;
+
+        &:active,
+        &:hover {
+            .grip {
+                @apply opacity-100;
+            }
+        }
+    }
+}
+
+.grip {
+    @apply opacity-25 transition-opacity;
+
+    &:hover,
+    &:active {
+        .grip {
+            @apply opacity-100;
+        }
+    }
+}

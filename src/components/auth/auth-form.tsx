@@ -40,7 +40,7 @@ const AuthForm: React.FC<{
 										{name === 'login' ? `Welcome back` : `Welcome`}
 									</h1>
 									<p className='text-balance text-muted-foreground first-letter:uppercase '>
-										{name === 'login' ? `sign up` : `log in`} to your Listify
+										{name === 'login' ? `log in` : `sign up`} to your Listify
 										account
 									</p>
 								</div>

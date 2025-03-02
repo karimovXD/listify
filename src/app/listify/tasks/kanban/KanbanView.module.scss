@@ -1,0 +1,44 @@
+		.card {
+			@apply rounded-md p-1 relative bg-colors-dark flex flex-col gap-3 shadow-2xl;
+
+			&.completed {
+				@apply italic line-through opacity-50;
+			}
+
+			.cardHeader {
+				@apply flex items-center mb-2;
+				font-size: 93%;
+
+				>input:last-child {
+					@apply ml-2;
+				}
+			}
+
+			.cardBody,
+			.cardBody>div>button>span,
+			.cardBody>div>div>button>span {
+				font-size: 83%;
+			}
+
+			.cardBody {
+				>div {
+					@apply mb-2.5 w-max;
+					min-width: 6rem;
+
+					>button:last-child {
+						@apply opacity-15;
+					}
+				}
+			}
+		}
+
+		.grip {
+			@apply opacity-20 transition-opacity border;
+
+			&:hover,
+			&:active {
+				.grip {
+					@apply opacity-100;
+				}
+			}
+		}
