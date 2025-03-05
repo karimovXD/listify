@@ -1,5 +1,5 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd'
-import type { Dispatch, SetStateAction } from 'react'
+import { type Dispatch, type SetStateAction } from 'react'
 
 import type { ITaskResponse } from '@/types/task.types'
 
@@ -7,7 +7,7 @@ import { FILTERS } from '../columns.data'
 import { filterTasks } from '../filter-tasks'
 
 import { KanbanAddCardInput } from './KanbanAddCard'
-import { KanbanCard } from './KanbanCard'
+import KanbanCard from './KanbanCard'
 
 interface IKanbanColumn {
 	value: string
@@ -23,7 +23,7 @@ export function KanbanColumn({ value, items, label, setItems }: IKanbanColumn) {
 				<div
 					ref={provided.innerRef}
 					{...provided.droppableProps}
-					className='h-auto'
+					className='w-72 h-auto'
 				>
 					<div className='h-auto bg-colors-secondary p-2 rounded flex flex-col gap-6'>
 						<h2 className='text-2xl font-semibold'>{label}</h2>

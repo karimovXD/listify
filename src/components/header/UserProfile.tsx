@@ -20,9 +20,9 @@ const UserProfile = () => {
 					<Skeleton className='h-8 w-8 rounded' />
 				</div>
 			) : (
-				<div className='flex items-center justify-end gap-2 h-full'>
+				<div className='flex items-center justify-end gap-2 h-full relative'>
 					<div className='flex flex-col items-end justify-end relative h-full'>
-						<h5 className='text-[12px] font-medium line-clamp-1 absolute top-0'>
+						<h5 className='text-[12px] font-medium line-clamp-1 sticky top-0'>
 							{data?.user?.name === '' ? 'User' : data?.user?.name}
 						</h5>
 						<h6 className='text-[10px] text-colors-stone-400 line-clamp-1 h-4'>

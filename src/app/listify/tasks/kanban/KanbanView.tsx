@@ -1,6 +1,9 @@
 'use client'
 
 import { DragDropContext } from '@hello-pangea/dnd'
+import { useMemo } from 'react'
+
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 import { COLUMNS } from '../columns.data'
 import { useTaskDnd } from '../hooks/useTaskDnd'
@@ -14,17 +17,20 @@ export function KanbanView() {
 
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
-			<div className='grid grid-cols-3 w-full gap-3'>
-				{COLUMNS.map(column => (
-					<KanbanColumn
-						key={column.value}
-						value={column.value}
-						label={column.label}
-						items={items}
-						setItems={setItems}
-					/>
-				))}
-			</div>
+			<ScrollArea className='w-96 h-full min-w-full'>
+				<div className='w-full h-full gap-3 flex items-start justify-start'>
+					{COLUMNS.map(column => (
+						<KanbanColumn
+							key={column.value}
+							value={column.value}
+							label={column.label}
+							items={items}
+							setItems={setItems}
+						/>
+					))}
+				</div>
+				<ScrollBar orientation='horizontal' />
+			</ScrollArea>
 		</DragDropContext>
 	)
 }

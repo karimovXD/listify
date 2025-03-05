@@ -1,6 +1,11 @@
 'use client'
 
-import { Loader, Pause, Play, RefreshCcw } from 'lucide-react'
+import {
+	IconLoader,
+	IconPlayerPause,
+	IconPlayerPlay,
+	IconRefresh
+} from '@tabler/icons-react'
 import React from 'react'
 
 import { Button } from '@/components/TimerButton'
@@ -34,7 +39,7 @@ const Timer = () => {
 				</div>
 			)}
 			{isLoading ? (
-				<Loader />
+				<IconLoader />
 			) : sessionsResponse?.data ? (
 				<div>
 					<PomodoroRounds
@@ -50,7 +55,11 @@ const Timer = () => {
 						}
 						disabled={actions.isUpdateRoundPending}
 					>
-						{timerState.isRunning ? <Pause size={30} /> : <Play size={30} />}
+						{timerState.isRunning ? (
+							<IconPlayerPause size={30} />
+						) : (
+							<IconPlayerPlay size={30} />
+						)}
 					</button>
 					<button
 						onClick={() => {
@@ -60,13 +69,13 @@ const Timer = () => {
 						className='absolute top-0 right-0 opacity-40 hover:opacity-90 transition-opacity'
 						disabled={isDeletePending}
 					>
-						<RefreshCcw size={19} />
+						<IconRefresh size={19} />
 					</button>
 				</div>
 			) : (
 				<Button
 					onClick={() => mutate()}
-					className='mt-1'
+					className='mt-3'
 					disabled={isPending}
 				>
 					Create session

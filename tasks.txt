@@ -1,2 +1,5 @@
 fix the auth page. logic toast and disable button after click
 change icons styles and something like that in the list page also cut the elements in the components
+
+memo components
+delete retard components

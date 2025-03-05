@@ -97,7 +97,7 @@ export function KanbanAddCardInput({ filterDate }: IKanbanAddCardInput) {
 								type='submit'
 								className='w-full'
 							>
-								Save changes
+								Add
 							</Button>
 						</DialogFooter>
 					</form>

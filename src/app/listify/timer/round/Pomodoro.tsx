@@ -1,5 +1,5 @@
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import cn from 'clsx'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import { IPomodoroRoundResponse } from '@/types/pomodoro.types'
 
@@ -30,7 +30,7 @@ export function PomodoroRounds({
 				disabled={!isCanPrevRound}
 				onClick={() => (isCanPrevRound ? prevRoundHandler() : false)}
 			>
-				<ChevronLeft size={23} />
+				<IconChevronLeft size={23} />
 			</button>
 			<div className={styles.roundsContainer}>
 				{rounds &&
@@ -50,7 +50,7 @@ export function PomodoroRounds({
 				disabled={!isCanNextRound}
 				onClick={() => (isCanNextRound ? nextRoundHandler() : false)}
 			>
-				<ChevronRight size={23} />
+				<IconChevronRight size={23} />
 			</button>
 		</div>
 	)

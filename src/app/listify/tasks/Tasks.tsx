@@ -9,7 +9,7 @@ const Tasks = () => {
 	return (
 		<Tabs
 			defaultValue='board'
-			className='w-full flex-1 overflow-auto'
+			className='w-full flex-1 flex flex-col items-start justify-start'
 		>
 			<TabsList className='grid w-[200px] grid-cols-2'>
 				<TabsTrigger
@@ -29,7 +29,7 @@ const Tasks = () => {
 			</TabsList>
 			<TabsContent
 				value='board'
-				className='w-full'
+				className='w-full h-full'
 			>
 				<KanbanView />
 			</TabsContent>

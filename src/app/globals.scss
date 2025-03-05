@@ -73,10 +73,12 @@ body {
     @apply bg-background text-foreground;
   }
 
-  html,
-  body {
-    width: 100%;
+  html {
     height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
   }
 }
 
@@ -86,6 +88,7 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

@@ -1,6 +1,6 @@
-import { IconEdit, IconLoader, IconTrash } from '@tabler/icons-react'
+import { IconLoader, IconTrash } from '@tabler/icons-react'
 import cn from 'clsx'
-import type { Dispatch, SetStateAction } from 'react'
+import { type Dispatch, type SetStateAction, memo } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { Badge } from '@/components/Badge'
@@ -12,7 +12,6 @@ import { Checkbox } from '@/components/ui/checkbox'
 import type { ITaskResponse, TypeTaskFormState } from '@/types/task.types'
 
 import { useDeleteTask } from '../hooks/useDeleteTasks'
-import { useTaskDebounce } from '../hooks/useTaskDebounce'
 
 import styles from './KanbanView.module.scss'
 
@@ -21,8 +20,8 @@ interface IKanbanCard {
 	setItems: Dispatch<SetStateAction<ITaskResponse[] | undefined>>
 }
 
-export function KanbanCard({ item, setItems }: IKanbanCard) {
-	const { register, control, watch } = useForm<TypeTaskFormState>({
+function KanbanCard({ item, setItems }: IKanbanCard) {
+	const { control, watch } = useForm<TypeTaskFormState>({
 		defaultValues: {
 			name: item.name,
 			isCompleted: item.isCompleted,
@@ -30,8 +29,6 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 			priority: item.priority
 		}
 	})
-
-	useTaskDebounce({ watch, itemId: item.id })
 
 	const { deleteTask, isDeletePending } = useDeleteTask()
 
@@ -64,13 +61,6 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 					</Button>
 				</div>
 				<div>
-					{/*<Button
-						variant={'outline'}
-						className='opacity-40 transition-opacity hover:opacity-100'
-						onClick={() => console.log(item.id)}
-					>
-						<IconEdit size={15} />
-					</Button>*/}
 					<UpdateModal
 						item={item}
 						taskId={item.id}
@@ -120,3 +110,5 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 		</div>
 	)
 }
+
+export default memo(KanbanCard)

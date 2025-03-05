@@ -14,7 +14,7 @@
 }
 
 .grip {
-    @apply opacity-25 transition-opacity;
+    @apply opacity-25 transition-opacity hover:cursor-grab focus:cursor-grabbing;
 
     &:hover,
     &:active {
