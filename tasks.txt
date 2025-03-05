@@ -1,5 +1,7 @@
 fix the auth page. logic toast and disable button after click
 change icons styles and something like that in the list page also cut the elements in the components
+next.config optimization
+need also add the 404 page and need add media for all pages
 
 memo components
 delete retard components
