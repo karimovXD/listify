@@ -35,4 +35,4 @@
 
 //export const config = {
 //    matcher: ['/', '/listify/:path*', '/auth/:path*']
-}
+//}
