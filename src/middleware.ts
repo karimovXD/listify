@@ -1,38 +1,37 @@
+import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
-
 import { DASHBOARD_PAGES } from './config/pages-url.config'
-import { EnumTokens } from './services/auth-token.service'
 
 export async function middleware(request: NextRequest) {
-    const { url, cookies, nextUrl } = request
+    console.log('Middleware triggered on:', request.nextUrl.pathname)
 
-    const refreshToken = cookies?.get(EnumTokens.REFRESH_TOKEN)?.value
-    console.log(refreshToken, cookies.get(EnumTokens.REFRESH_TOKEN), cookies.get(EnumTokens?.REFRESH_TOKEN))
-    const isAuthPage = url.includes('/auth')
+    const isAuthPage = request.nextUrl.pathname.includes('/auth')
+    let isAuthenticated = false
 
-    // Если пользователь заходит на "/", отправляем его в "/listify"
-    if (nextUrl.pathname === '/') {
-        return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, request.url))
+    try {
+        const response = await axios.get(`${request.nextUrl.origin}/api/auth/check`, {
+            headers: {
+                Cookie: request.headers.get('cookie') || '',
+            },
+        })
+        isAuthenticated = response.data.isAuthenticated
+    } catch (error) {
+        console.error('Auth check failed:', error)
     }
 
-    // Если пользователь уже авторизован, но пытается зайти на страницу авторизации — редиректим в Dashboard
-    if (isAuthPage && refreshToken) {
-        return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, url))
-    }
-
-    // Разрешаем доступ к auth-страницам
-    if (isAuthPage) {
-        return NextResponse.next()
-    }
-
-    // Если нет refreshToken, отправляем на страницу логина
-    if (!refreshToken) {
+    // Если пользователь не аутентифицирован, отправляем на логин
+    if (!isAuthenticated) {
         return NextResponse.redirect(new URL('/auth/login', request.url))
+    }
+
+    // Если авторизован и зашел на auth-страницу — редиректим в Dashboard
+    if (isAuthPage && isAuthenticated) {
+        return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, request.url))
     }
 
     return NextResponse.next()
 }
 
 export const config = {
-    matcher: ['/', '/listify/:path*', '/auth/:path*']
+    matcher: ['/', '/listify/:path*', '/auth/:path*'],
 }
