@@ -14,6 +14,7 @@ import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
 
 export default function Login() {
+	
 	const { reset } = useForm<AuthFormType>({
 		mode: 'onChange'
 	})
@@ -26,8 +27,8 @@ export default function Login() {
 		onSuccess() {
 			toast.success('Successfully login!')
 			reset()
-			push(DASHBOARD_PAGES.HOME)
-		}
+			push(DASHBOARD_PAGES.HOME);
+		},
 	})
 
 	const onSubmit = (data: AuthFormType) => {
