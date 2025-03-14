@@ -47,3 +47,13 @@ export async function middleware(request: NextRequest) {
 export const config = {
     matcher: ['/', '/listify/:path*', '/auth/:path*']
 }
+
+
+
+branches:
+1 delete retard components
+2 optimization components memo and add media for all pages
+3 optimization next.config
+4 change the design website fix the height and width
+5 tailwind and styles scss fix the padding
+6 add the 404 page

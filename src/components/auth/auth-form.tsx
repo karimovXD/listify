@@ -22,8 +22,10 @@ const AuthForm: React.FC<{
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }
+		formState: { errors, submitCount }
 	} = useForm<FormData>()
+
+	console.log(submitCount)
 
 	return (
 		<div className='flex flex-col gap-6'>
@@ -78,6 +80,7 @@ const AuthForm: React.FC<{
 								<Button
 									type='submit'
 									className='w-full'
+									disabled={submitCount > 0 ? true : false}
 								>
 									Submit
 								</Button>
