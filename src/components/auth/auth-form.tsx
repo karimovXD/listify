@@ -25,8 +25,6 @@ const AuthForm: React.FC<{
 		formState: { errors, submitCount }
 	} = useForm<FormData>()
 
-	console.log(submitCount)
-
 	return (
 		<div className='flex flex-col gap-6'>
 			<Card className='overflow-hidden rounded-md'>

@@ -12,7 +12,7 @@ import { TypeUserForm } from '@/types/auth.types'
 import { useInitialData } from './useInitialData'
 import { useUpdateSettings } from './useUpdateSettings'
 
-const Settings = () => {
+export const Settings = () => {
 	const { register, handleSubmit, reset } = useForm<TypeUserForm>({
 		mode: 'onChange'
 	})
@@ -106,5 +106,3 @@ const Settings = () => {
 		</form>
 	)
 }
-
-export default Settings

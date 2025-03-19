@@ -32,7 +32,12 @@ interface IKanbanAddCardInput {
 export function KanbanAddCardInput({ filterDate }: IKanbanAddCardInput) {
 	const { createTask } = useCreateTask()
 
-	const { register, handleSubmit, control } = useForm<TypeTaskFormState>({
+	const {
+		register,
+		handleSubmit,
+		control,
+		formState: { submitCount }
+	} = useForm<TypeTaskFormState>({
 		defaultValues: {
 			createdAt: filterDate
 		}
@@ -45,6 +50,7 @@ export function KanbanAddCardInput({ filterDate }: IKanbanAddCardInput) {
 					<Button
 						variant='default'
 						className='italic text-sm'
+						type='button'
 					>
 						Add task...
 					</Button>
@@ -96,6 +102,7 @@ export function KanbanAddCardInput({ filterDate }: IKanbanAddCardInput) {
 							<Button
 								type='submit'
 								className='w-full'
+								disabled={submitCount >= 1 ? true : false}
 							>
 								Add
 							</Button>

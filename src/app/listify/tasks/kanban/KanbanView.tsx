@@ -1,7 +1,6 @@
 'use client'
 
 import { DragDropContext } from '@hello-pangea/dnd'
-import { useMemo } from 'react'
 
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
@@ -17,7 +16,7 @@ export function KanbanView() {
 
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
-			<ScrollArea className='w-96 h-full min-w-full'>
+			<ScrollArea className='w-96 h-full min-w-full pb-4'>
 				<div className='w-full h-full gap-3 flex items-start justify-start'>
 					{COLUMNS.map(column => (
 						<KanbanColumn

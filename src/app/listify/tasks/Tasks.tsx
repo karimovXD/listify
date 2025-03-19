@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { KanbanView } from './kanban/KanbanView'
 
-const Tasks = () => {
+export const Tasks = () => {
 	return (
 		<Tabs
 			defaultValue='board'
@@ -42,5 +42,3 @@ const Tasks = () => {
 		</Tabs>
 	)
 }
-
-export default Tasks

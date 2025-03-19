@@ -3,7 +3,7 @@ import React from 'react'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
-import Tasks from './Tasks'
+import { Tasks } from './Tasks'
 
 export const metadata: Metadata = {
 	title: 'Tasks',
